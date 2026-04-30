@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">质量类 Skill</div>
+    <h1>Verify</h1>
+    <p class="hero-subtitle">证据驱动的完成度验证，不是自我声称</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>✅ 什么是 Verify</h3>
+        <p>Verify 是一个完成度验证技能。它的核心理念是"用证据说话，而不是用感觉说话"——验证任务是否真正完成，而不是声称完成了。</p>
+        <p style="margin-top: 1rem;">当开发者说"完成了"时，Verify 会问："证据在哪里？测试通过了吗？功能验证了吗？"确保交付物真正满足要求。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>功能交付验证</strong>："验证登录功能已正确实现"</li>
+          <li><strong>Bug 修复确认</strong>："验证 bug #123 已修复"</li>
+          <li><strong>重构完成检查</strong>："验证模块重构后功能正常"</li>
+          <li><strong>发布前质量确认</strong>："验证所有验收标准已满足"</li>
+          <li><strong>代码合并前检查</strong>："验证 PR 满足合并标准"</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：验证功能交付</div>
+          <p>开发者说："登录功能已完成"</p>
+          <p>Verify 验证：</p>
+          <p>• 运行测试套件 → 通过</p>
+          <p>• 检查登录流程代码 → 存在</p>
+          <p>• 验证 token 处理逻辑 → 正确</p>
+          <p>• 验证错误处理 → 完善</p>
+          <p>• 验证文档 → 存在</p>
+          <p>结论：✅ 验证通过</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">verify "验证用户模块已完成"</div>
+        <p>指定验收标准：</p>
+        <div class="command-box">verify ".omc/plans/test-spec-xxx.md"</div>
+        <p>快速验证：</p>
+        <div class="command-box">verify --quick "验证测试覆盖"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>📊 验证维度</h3>
+        <p>Verify 会从多个维度验证：</p>
+        <ul class="styled-list">
+          <li><strong>功能完整性</strong>：所有功能是否实现</li>
+          <li><strong>测试覆盖</strong>：测试是否充分</li>
+          <li><strong>代码质量</strong>：是否符合质量标准</li>
+          <li><strong>文档完整</strong>：文档是否同步更新</li>
+          <li><strong>无回归问题</strong>：现有功能是否正常</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 验收标准优先级</div>
+          <p>Verify 会按照 Plan 生成的验收标准逐项检查，确保每一条都有对应的验证证据。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>需要验收标准</strong>：最好有明确的验收标准文件</li>
+          <li><strong>不是自我验证</strong>：不能只凭开发者声称</li>
+          <li><strong>需要可验证的证据</strong>：测试、演示、截图等</li>
+          <li><strong>失败会继续迭代</strong>：验证失败会继续修复</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

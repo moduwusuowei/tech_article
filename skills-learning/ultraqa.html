@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultraqa - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">质量类 Skill</div>
+    <h1>Ultraqa</h1>
+    <p class="hero-subtitle">测试 → 验证 → 修复 → 重复，直到完美</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>🧪 什么是 Ultraqa</h3>
+        <p>Ultraqa 是一个 QA 循环技能。它的核心理念是"不放过任何一个 bug"——通过反复的测试、验证、修复循环，确保交付物达到质量标准。</p>
+        <p style="margin-top: 1rem;">当你说"ultraqa 验证这个功能"时，它会启动一个自动化循环：运行测试 → 检查结果 → 修复问题 → 重复，直到所有测试通过。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>功能验收测试</strong>：确保新功能按预期工作</li>
+          <li><strong>回归测试</strong>：修改后确保没有破坏现有功能</li>
+          <li><strong>Bug 修复验证</strong>：修复后反复测试确保不再复发</li>
+          <li><strong>集成测试</strong>：多个模块联调时的系统性测试</li>
+          <li><strong>发布前检查</strong>：上线前的最终质量确认</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：修复并验证 bug</div>
+          <p>用户说："ultraqa 修复并验证登录超时问题"</p>
+          <p>Ultraqa 执行循环：</p>
+          <p>1. 运行相关测试用例</p>
+          <p>2. 发现测试失败：token 刷新逻辑有问题</p>
+          <p>3. 修复代码</p>
+          <p>4. 再次运行测试</p>
+          <p>5. 通过！继续下一轮</p>
+          <p>6. 重复直到所有测试通过</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">ultraqa "验证用户模块"</div>
+        <p>指定测试文件：</p>
+        <div class="command-box">ultraqa --test "tests/user.test.ts" "验证登录功能"</div>
+        <p>带覆盖率检查：</p>
+        <div class="command-box">ultraqa --coverage 80 "确保测试覆盖率达到 80%"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚙️ 工作原理</h3>
+        <p>Ultraqa 采用 QA 循环流水线：</p>
+        <ul class="styled-list">
+          <li><strong>Test</strong>：运行测试套件</li>
+          <li><strong>Verify</strong>：检查测试结果</li>
+          <li><strong>Fix</strong>：修复失败的用例</li>
+          <li><strong>Repeat</strong>：循环直到所有测试通过</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 状态记录</div>
+          <p>Ultraqa 记录每次循环的结果，可以查看历史测试报告和修复记录。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>需要有测试</strong>：Ultraqa 需要现有测试用例才能运行</li>
+          <li><strong>有界循环</strong>：防止无限循环，默认有最大迭代次数</li>
+          <li><strong>需要测试框架</strong>：Vitest、Jest、Pytest 等</li>
+          <li><strong>不是银弹</strong>：无法修复逻辑错误，只能修复明显的 bug</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 不要用 Ultraqa 的场景</div>
+          <p>没有测试用例 | 逻辑设计错误（需要重写）| 简单单次验证</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

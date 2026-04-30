@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autoresearch - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto; background: linear-gradient(135deg, #1a1a2e, #0f0f1a);">
+    <div class="hero-badge">执行类</div>
+    <h1>Autoresearch</h1>
+    <p class="hero-subtitle">自动研究分析任务 · 深入调研技术方案输出完整报告</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+      <div style="max-width: 900px; margin: 0 auto;">
+
+        <!-- 什么是 Autoresearch -->
+        <div class="detail-card">
+          <h3>🔬 什么是 Autoresearch？</h3>
+          <p>Autoresearch 是一种自动化的研究分析技能。当面对需要深入调研的技术问题时，它能够自主搜集信息、分析对比、权衡利弊，最终输出完整的研究报告。</p>
+          <div class="example-box">
+            <div class="example-box-title">🌰 典型场景</div>
+            <p>用户问："我们项目应该用 Redis 还是 Memcached 做缓存？"</p>
+            <p>→ Autoresearch 自动：</p>
+            <p>   1. 搜集两种方案的技术特性</p>
+            <p>   2. 对比性能、功能、成本</p>
+            <p>   3. 分析适用场景</p>
+            <p>   4. 结合项目实际给出建议</p>
+          </div>
+        </div>
+
+        <!-- 何时触发 -->
+        <div class="detail-card">
+          <h3>🎯 触发条件</h3>
+          <p>以下情况适合使用 Autoresearch：</p>
+          <ul class="styled-list">
+            <li>技术选型问题（数据库、框架、工具）</li>
+            <li>需要对比多个方案</li>
+            <li>调研新技术的适用性</li>
+            <li>评估迁移成本和风险</li>
+            <li>用户问"应该用 X 还是 Y"</li>
+          </ul>
+          <div class="tip-box">
+            <div class="tip-box-title">💡 区分</div>
+            <p>如果是"实现某个功能"，用普通 Agent；如果是"搞清楚某个问题"，用 Autoresearch。</p>
+          </div>
+        </div>
+
+        <!-- 研究流程 -->
+        <div class="detail-card">
+          <h3>📋 研究流程</h3>
+          <p>Autoresearch 按照结构化的流程进行研究：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * Autoresearch 研究流程
+ */
+
+// Phase 1: 明确研究目标
+明确：
+- 需要解答的核心问题是什么
+- 研究的边界和约束
+- 期望的输出形式
+
+// Phase 2: 信息搜集
+搜集渠道：
+- 官方文档
+- 技术博客/论文
+- 开源项目实践
+- 社区讨论
+
+// Phase 3: 分析整理
+分析维度：
+- 技术特性对比
+- 性能基准数据
+- 社区生态
+- 学习曲线
+- 维护成本
+
+// Phase 4: 综合判断
+权衡因素：
+- 当前团队能力
+- 项目规模和时间
+- 长期维护预期
+- 社区活跃度
+
+// Phase 5: 输出报告
+报告结构：
+- 执行摘要
+- 方案对比
+- 适用场景
+- 推荐建议
+- 参考资料</code></pre>
+        </div>
+
+        <!-- 信息搜集策略 -->
+        <div class="detail-card">
+          <h3>🔍 信息搜集策略</h3>
+          <p>针对不同类型的问题，采用不同的搜集策略：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 搜集渠道优先级
+ */
+const INFO_SOURCES = {
+  // 技术选型
+  'tech-selection': [
+    { source: '官方文档', weight: 30, reason: '权威一手资料' },
+    { source: 'Benchmark数据', weight: 25, reason: '量化性能对比' },
+    { source: 'GitHub Issues', weight: 20, reason: '真实问题反馈' },
+    { source: '社区讨论', weight: 15, reason: '实践经验' },
+    { source: '个人博客', weight: 10, reason: '补充视角' }
+  ],
+
+  // 最佳实践
+  'best-practice': [
+    { source: '官方示例', weight: 30, reason: '官方推荐方式' },
+    { source: '开源项目', weight: 25, reason: '生产环境验证' },
+    { source: '行业报告', weight: 20, reason: '系统性总结' },
+    { source: '专家访谈', weight: 15, reason: '深度洞察' },
+    { source: '技术会议', weight: 10, reason: '最新趋势' }
+  ],
+
+  // 迁移评估
+  'migration': [
+    { source: '官方迁移指南', weight: 30, reason: '官方路径' },
+    { source: '案例研究', weight: 25, reason: '实际迁移经验' },
+    { source: '工具支持', weight: 20, reason: '自动化程度' },
+    { source: '风险清单', weight: 15, reason: '潜在坑点' },
+    { source: '时间估算', weight: 10, reason: '工作量评估' }
+  ]
+};</code></pre>
+        </div>
+
+        <!-- 分析框架 -->
+        <div class="detail-card">
+          <h3>📊 分析框架</h3>
+          <p>使用结构化的框架进行分析：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 多维度分析框架
+ */
+const ANALYSIS_FRAMEWORK = {
+  dimensions: [
+    {
+      name: '功能完整性',
+      weight: 0.2,
+      criteria: ['核心功能', '扩展能力', '插件生态']
+    },
+    {
+      name: '性能表现',
+      weight: 0.25,
+      criteria: ['响应延迟', '吞吐量', '资源消耗']
+    },
+    {
+      name: '易用性',
+      weight: 0.15,
+      criteria: ['学习曲线', '开发体验', '文档质量']
+    },
+    {
+      name: '可维护性',
+      weight: 0.2,
+      criteria: ['社区活跃度', '更新频率', '技术支持']
+    },
+    {
+      name: '成本考量',
+      weight: 0.2,
+      criteria: ['License费用', '运维成本', '人力成本']
+    }
+  ],
+
+  // 综合评分
+  score: (scores) => {
+    return scores.reduce((sum, s, i) =>
+      sum + s * ANALYSIS_FRAMEWORK.dimensions[i].weight, 0
+    );
+  }
+};</code></pre>
+        </div>
+
+        <!-- 输出示例 -->
+        <div class="detail-card">
+          <h3>📝 输出报告示例</h3>
+          <p>针对"Redis vs Memcached"的完整报告：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code># 缓存方案技术调研报告
+
+## 执行摘要
+综合对比 Redis 和 Memcached，考虑项目需求，
+**推荐使用 Redis**。
+
+## 方案对比
+
+| 维度 | Redis | Memcached |
+|------|-------|----------|
+| 数据类型 | String/Hash/List/Set | 仅 String |
+| 持久化 | 支持 RDB/AOF | 不支持 |
+| 集群 | 原生支持 | 需要客户端实现 |
+| 性能 | 略低（功能更多） | 略高（简单） |
+| 文档 | 完善 | 简洁 |
+
+## 详细分析
+
+### 功能对比
+- Redis 支持更丰富的数据结构
+- Memcached 专注于简单缓存场景
+
+### 性能基准
+- 纯 Get/Set 场景：Memcached QPS 高约 15%
+- 复杂操作场景：Redis 整体更优
+
+### 生态对比
+- Redis 社区更活跃，版本迭代快
+- Memcached 维护稳定但更新较慢
+
+## 适用场景
+
+### 适合 Redis
+- 需要复杂数据结构
+- 需要持久化或主从复制
+- 分布式缓存场景
+- 消息队列、排行榜等场景
+
+### 适合 Memcached
+- 简单的 Session 缓存
+- 追求极致性能
+- 不需要数据持久化
+
+## 推荐建议
+
+基于项目需求（需要 Session + 用户画像缓存）：
+**选择 Redis**
+- 功能覆盖全面
+- 运维成本可控
+- 团队已有 Redis 经验
+
+### 实施建议
+1. 先部署单节点 Redis
+2. 监控性能和资源使用
+3. 根据需要扩展为集群
+
+---
+*调研时间：2026-04-28*
+*参考资料：Redis 官方文档、Memcached Wiki、性能基准测试报告*</code></pre>
+        </div>
+
+        <!-- 研究技巧 -->
+        <div class="detail-card">
+          <h3>💡 研究技巧</h3>
+          <ul class="styled-list">
+            <li><strong>多源验证</strong>：单一来源可能被误导，多方印证更可靠</li>
+            <li><strong>时间筛选</strong>：技术文章有时效性，优先看近两年的</li>
+            <li><strong>实践优先</strong>：GitHub 真实项目比理论更可信</li>
+            <li><strong>边界明确</strong>：清晰界定适用范围，避免以偏概全</li>
+            <li><strong>量化对比</strong>：能数字化的不模糊，用数据说话</li>
+          </ul>
+        </div>
+
+        <!-- 与其他 Skill 配合 -->
+        <div class="detail-card">
+          <h3>🔗 配合使用</h3>
+          <p>Autoresearch 经常与其他 Skills 配合使用：</p>
+          <ul class="styled-list">
+            <li><strong>+ Plan</strong>：调研结果作为规划决策的依据</li>
+            <li><strong>+ Architect</strong>：架构选型前的技术调研</li>
+            <li><strong>+ Critic</strong>：对调研结果进行批判性审视</li>
+            <li><strong>+ Debug</strong>：问题根因调研</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Skills 学堂 · Claude Code Agent Skills 指南</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

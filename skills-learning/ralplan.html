@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ralplan - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">规划类 Skill</div>
+    <h1>Ralplan</h1>
+    <p class="hero-subtitle">共识规划，三方评审达成一致</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>🤝 什么是 Ralplan</h3>
+        <p>Ralplan 是"共识规划"技能，是 Plan 的 Consensus 模式的具体实现。它通过 Planner、Architect、Critic 三方评审，确保计划的质量和可行性。</p>
+        <p style="margin-top: 1rem;">就像公司重大决策需要多部门评审一样，Ralplan 让架构师和技术评审专家同时审查计划，确保没有遗漏和风险。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>高风险决策</strong>：认证/安全模块变更</li>
+          <li><strong>数据迁移</strong>：数据库迁移、重构</li>
+          <li><strong>破坏性变更</strong>：API 破坏性修改</li>
+          <li><strong>公有 API 设计</strong>：面向用户的功能设计</li>
+          <li><strong>架构调整</strong>：微服务拆分、合并</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：重构认证模块</div>
+          <p>用户说："ralplan 重构用户认证模块"</p>
+          <p>Ralplan 执行共识流程：</p>
+          <p>1. <strong>Planner</strong>：生成初稿计划</p>
+          <p>2. <strong>Architect</strong>：审查架构合理性</p>
+          <p>   - 提出：迁移期间如何保证兼容？</p>
+          <p>   - 提出：性能影响如何评估？</p>
+          <p>3. <strong>Critic</strong>：评审质量和风险</p>
+          <p>   - 发现：回滚方案缺失</p>
+          <p>   - 发现：测试计划不完整</p>
+          <p>4. Planner 根据反馈修订</p>
+          <p>5. 重复直到 Critic 批准</p>
+          <p>最终：经过多方评审的可行计划</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">ralplan "重构支付模块"</div>
+        <p>正式模式（高风险）：</p>
+        <div class="command-box">ralplan --deliberate "迁移到 Kubernetes"</div>
+        <p>交互模式：</p>
+        <div class="command-box">ralplan --interactive "设计新的 API"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>🤝 三方角色</h3>
+        <p>Ralplan 的共识机制由三个角色组成：</p>
+        <ul class="styled-list">
+          <li><strong>Planner</strong>：制定初始计划，包含原则、决策驱动因素、备选方案</li>
+          <li><strong>Architect</strong>：架构审查，提出 steelman 反论据，确保架构合理性</li>
+          <li><strong>Critic</strong>：质量评审，验证完整性，确保没有遗漏</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 短模式 vs 正式模式</div>
+          <p>Short 模式（默认）：适合一般决策。Deliberate 模式：增加 pre-mortem 分析和扩展测试计划。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>📄 输出内容</h3>
+        <p>Ralplan 会生成完整的计划文档：</p>
+        <ul class="styled-list">
+          <li><strong>Principles</strong>：3-5 条核心原则</li>
+          <li><strong>Decision Drivers</strong>：Top 3 决策驱动因素</li>
+          <li><strong>Viable Options</strong>：>=2 个可行方案及对比</li>
+          <li><strong>ADR</strong>：架构决策记录</li>
+          <li><strong>Pre-mortem</strong>（Deliberate）：3 个失败场景</li>
+          <li><strong>Test Plan</strong>（Deliberate）：完整测试计划</li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>需要时间</strong>：共识过程比直接规划更长</li>
+          <li><strong>需要用户参与</strong>：关键决策点需要用户确认</li>
+          <li><strong>有界迭代</strong>：最多 5 轮迭代防止无限循环</li>
+          <li><strong>适合复杂任务</strong>：简单任务不需要共识规划</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 何时用 --deliberate</div>
+          <p>高风险场景：认证/安全、数据迁移、破坏性变更、公有 API。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

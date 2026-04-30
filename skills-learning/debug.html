@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">工具类 Skill</div>
+    <h1>Debug</h1>
+    <p class="hero-subtitle">根因分析，找到问题的本质</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>🔧 什么是 Debug</h3>
+        <p>Debug 是一个根因分析技能。与表面修复不同，Debug 会深入分析问题的根本原因，而不是只修表面。</p>
+        <p style="margin-top: 1rem;">它的核心理念是："不要只问'怎么修'，要问'为什么坏'。"找到根本原因，才能防止同类问题再次发生。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>反复出现的 Bug</strong>："这个 bug 修了又出现"</li>
+          <li><strong>奇怪的行为</strong>："代码逻辑看起来对，但结果不对"</li>
+          <li><strong>性能问题</strong>："系统突然变慢，找不到原因"</li>
+          <li><strong>并发问题</strong>："偶尔崩溃，可能是竞态条件"</li>
+          <li><strong>生产问题排查</strong>："线上出了问题，需要快速定位"</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：修复内存泄漏</div>
+          <p>问题："应用运行几天后内存持续增长"</p>
+          <p>表面修复："加个定时重启"（不解决根本问题）</p>
+          <p>Debug 根因分析：</p>
+          <p>1. 分析内存dump，发现对象持续增长</p>
+          <p>2. 追踪引用链，发现 EventEmitter 监听器未移除</p>
+          <p>3. 找到根因：组件卸载时未清理事件监听</p>
+          <p>4. 修复：componentWillUnmount 中清理监听器</p>
+          <p>结果：从根本上解决了内存泄漏</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">debug "修复登录超时问题"</div>
+        <p>指定分析范围：</p>
+        <div class="command-box">debug --scope "api/*" "分析接口性能问题"</div>
+        <p>带上下文：</p>
+        <div class="command-box">debug --error "TypeError: Cannot read property" "分析报错"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>🔍 分析方法</h3>
+        <p>Debug 采用结构化分析方法：</p>
+        <ul class="styled-list">
+          <li><strong>现象收集</strong>：收集所有相关的错误信息</li>
+          <li><strong>假设生成</strong>：提出可能的根因假设</li>
+          <li><strong>假设验证</strong>：用证据验证或推翻假设</li>
+          <li><strong>根因确认</strong>：找到真正的根本原因</li>
+          <li><strong>修复建议</strong>：提出根本性解决方案</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 5 Why 分析法</div>
+          <p>Debug 常用"5 Why"：连续问 5 次"为什么"，层层深入找到根本原因。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>需要复现环境</strong>：最好能在测试环境复现问题</li>
+          <li><strong>可能需要日志</strong>：日志对定位问题很重要</li>
+          <li><strong>不是万能</strong>：有些问题难以在短期内定位</li>
+          <li><strong>复杂问题耗时</strong>：根因分析可能需要较长时间</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

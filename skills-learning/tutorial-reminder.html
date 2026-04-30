@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时提醒 Skill - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="tutorial.html">天气教程</a></li>
+        <li><a href="tutorial-stock.html">股票教程</a></li>
+        <li><a href="tutorial-reminder.html" class="active">提醒教程</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto; background: linear-gradient(135deg, #1a1a2e, #0f0f1a);">
+    <div class="hero-badge">🎓 实战教程</div>
+    <h1>定时提醒 Skill</h1>
+    <p class="hero-subtitle">创建智能提醒，不再错过重要事项</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+      <div style="max-width: 900px; margin: 0 auto;">
+
+        <!-- 项目目标 -->
+        <div class="detail-card">
+          <h3>📋 项目目标</h3>
+          <p>创建一个定时提醒 Skill，功能包括：</p>
+          <ul class="styled-list">
+            <li>设置一次性提醒或重复提醒</li>
+            <li>支持自然语言时间描述</li>
+            <li>到达时间自动通知</li>
+            <li>查看和取消已有提醒</li>
+          </ul>
+          <div class="example-box">
+            <div class="example-box-title">🌰 使用效果</div>
+            <p>用户说："半小时后提醒我开会"</p>
+            <p>Skill："✅ 已设置提醒：30分钟后提醒「开会」"</p>
+            <p>...</p>
+            <p>30分钟后：</p>
+            <p>🔔 【提醒】开会时间到！</p>
+          </div>
+        </div>
+
+        <!-- SKILL.md -->
+        <div class="detail-card">
+          <h3>📝 SKILL.md 定义</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>---
+name: reminder
+description: 智能定时提醒，不再错过重要事项
+triggers:
+  - "提醒我"
+  - "定时"
+  - "remind"
+  - "提醒"
+argument-hint: "<time> <message>"
+level: 2
+---
+
+# 定时提醒 Skill
+
+## When to Activate
+- 用户说"提醒我..."、"半小时后..."
+- 用户询问"有什么提醒"
+- 用户说"取消提醒"
+
+## Workflow
+
+### 1. 解析自然语言时间
+支持格式：
+- "半小时后" → 30分钟
+- "下午3点" → 今天15:00
+- "明天9点" → 明天09:00
+- "每周五5点" → 每周五17:00
+
+### 2. 创建提醒
+\`\`\`javascript
+const reminder = {
+  id: generateId(),
+  message: "会议",
+  time: targetTime,
+  repeat: false,
+  createdAt: Date.now()
+};
+saveReminder(reminder);
+\`\`\`
+
+### 3. 设置定时器
+使用 setTimeout 或 cronjob 触发提醒
+
+### 4. 到达时间通知
+发送通知或语音播报
+
+## Examples
+
+```
+user: 半小时后提醒我开会
+assistant: ✅ 已设置
+📅 时间：今天 15:30
+📝 内容：开会
+🔔 届时我会提醒你
+
+user: 有什么提醒
+assistant: 📋 你的提醒列表：
+1. 开会 - 今天 15:30
+2. 喝水 - 每小时
+3. 健身 - 明天 07:00
+```
+
+## Notes
+- 使用 localStorage 存储提醒
+- 后台运行需要浏览器通知权限
+- 重启浏览器后提醒不丢失（使用索引DB）</code></pre>
+        </div>
+
+        <!-- 核心代码 -->
+        <div class="detail-card">
+          <h3>💻 核心代码实现</h3>
+          <p>时间解析器 (<code>src/parser.js</code>)：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 解析自然语言时间
+ * "半小时后" → timestamp
+ * "下午3点" → timestamp
+ * "明天9点" → timestamp
+ */
+
+function parseTime(text) {
+  const now = new Date();
+  let target = new Date();
+
+  // 匹配"X分钟后"
+  const afterMatch = text.match(/(\d+)\s*分钟\s*后/i);
+  if (afterMatch) {
+    return now.getTime() + parseInt(afterMatch[1]) * 60 * 1000;
+  }
+
+  // 匹配"X小时后"
+  const hourMatch = text.match(/(\d+)\s*小时\s*后/i);
+  if (hourMatch) {
+    return now.getTime() + parseInt(hourMatch[1]) * 60 * 60 * 1000;
+  }
+
+  // 匹配"下午3点"
+  const pmMatch = text.match(/下午(\d+)\s*点/i);
+  if (pmMatch) {
+    target.setHours(parseInt(pmMatch[1]), 0, 0, 0);
+    if (target <= now) target.setDate(target.getDate() + 1);
+    return target.getTime();
+  }
+
+  // 匹配"明天9点"
+  const tomorrowMatch = text.match(/明天(\d+)\s*点/i);
+  if (tomorrowMatch) {
+    target.setDate(target.getDate() + 1);
+    target.setHours(parseInt(tomorrowMatch[1]), 0, 0, 0);
+    return target.getTime();
+  }
+
+  throw new Error('无法解析时间，请重新描述');
+}
+
+/**
+ * 格式化时间显示
+ */
+function formatTime(timestamp) {
+  const date = new Date(timestamp);
+  const now = new Date();
+  const isToday = date.toDateString() === now.toDateString();
+
+  if (isToday) {
+    return \`今天 \${date.getHours()}:\${String(date.getMinutes()).padStart(2, '0')}\`;
+  }
+  return date.toLocaleString('zh-CN', {
+    month: 'numeric', day: 'numeric',
+    hour: 'numeric', minute: '2-digit'
+  });
+}</code></pre>
+        </div>
+
+        <!-- 提醒管理 -->
+        <div class="detail-card">
+          <h3>⏰ 提醒管理</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 创建提醒
+ */
+async function createReminder(time, message) {
+  const reminder = {
+    id: crypto.randomUUID(),
+    message,
+    time,
+    repeat: null,
+    enabled: true
+  };
+
+  // 保存
+  const reminders = await getReminders();
+  reminders.push(reminder);
+  await saveReminders(reminders);
+
+  // 设置定时器
+  scheduleReminder(reminder);
+
+  return reminder;
+}
+
+/**
+ * 设置定时器
+ */
+function scheduleReminder(reminder) {
+  const delay = reminder.time - Date.now();
+  if (delay <= 0) return;
+
+  const timer = setTimeout(async () => {
+    await notifyUser(reminder);
+
+    // 如果是重复提醒，重新设置
+    if (reminder.repeat) {
+      reminder.time = calculateNextTime(reminder.repeat);
+      await saveReminder(reminder);
+      scheduleReminder(reminder);
+    } else {
+      // 单次提醒完成后删除
+      await deleteReminder(reminder.id);
+    }
+  }, delay);
+
+  // 存储 timer ID 以便取消
+  reminder.timerId = timer;
+}
+
+/**
+ * 发送通知
+ */
+async function notifyUser(reminder) {
+  // 桌面通知
+  if (Notification.permission === 'granted') {
+    new Notification('⏰ 提醒', { body: reminder.message });
+  }
+
+  // 语音播报
+  if (window.speechSynthesis) {
+    const utterance = new SpeechSynthesisUtterance(reminder.message);
+    utterance.lang = 'zh-CN';
+    speechSynthesis.speak(utterance);
+  }
+
+  // 在界面上显示
+  showReminderToast(reminder);
+}</code></pre>
+        </div>
+
+        <!-- 目录结构 -->
+        <div class="detail-card">
+          <h3>📁 最终目录结构</h3>
+          <div class="command-box">~/.claude/skills/omc-learned/reminder/
+├── SKILL.md       # Skill 定义
+└── src/
+    ├── parser.js   # 时间解析
+    ├── storage.js  # 存储管理
+    ├── scheduler.js # 定时调度
+    └── notify.js   # 通知发送
+</div>
+          <div class="tip-box">
+            <div class="tip-box-title">💡 浏览器限制</div>
+            <p>桌面通知需要用户授权。语音播报使用 Web Speech API，部分浏览器可能不支持中文。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻聚合 Skill - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="tutorial.html">天气教程</a></li>
+        <li><a href="tutorial-news.html" class="active">新闻教程</a></li>
+        <li><a href="tutorial-todo.html">待办教程</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto; background: linear-gradient(135deg, #1a1a2e, #0f0f1a);">
+    <div class="hero-badge">🎓 实战教程</div>
+    <h1>新闻聚合 Skill</h1>
+    <p class="hero-subtitle">从 0 到 1 实现个性化新闻速递</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+      <div style="max-width: 900px; margin: 0 auto;">
+
+        <!-- 项目目标 -->
+        <div class="detail-card">
+          <h3>📋 项目目标</h3>
+          <p>创建一个新闻聚合 Skill，功能包括：</p>
+          <ul class="styled-list">
+            <li>按关键词/分类获取新闻</li>
+            <li>显示新闻摘要和来源</li>
+            <li>支持搜索历史新闻</li>
+            <li>收藏感兴趣的新闻</li>
+          </ul>
+          <div class="example-box">
+            <div class="example-box-title">🌰 使用效果</div>
+            <p>用户说："给我看看今天的科技新闻"</p>
+            <p>Skill 返回：</p>
+            <p>📰 今日科技新闻 (2026-04-28)</p>
+            <p>━━━━━━━━━━━━━━━━━</p>
+            <p>1. 🔥 ChatGPT 发布新版本，能力大幅提升</p>
+            <p>   来源：36氪 | 2小时前</p>
+            <p>2. 📱 苹果 Vision Pro 2 曝光</p>
+            <p>   来源：IT之家 | 5小时前</p>
+            <p>3. 🚗 特斯拉自动驾驶获得新许可</p>
+            <p>   来源：电动邦 | 昨天</p>
+          </div>
+        </div>
+
+        <!-- SKILL.md -->
+        <div class="detail-card">
+          <h3>📝 SKILL.md 定义</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>---
+name: news-feed
+description: 个性化新闻聚合，分类推送今日热点
+triggers:
+  - "新闻"
+  - "今日热点"
+  - "给我看新闻"
+  - "news"
+argument-hint: "<category>"
+level: 2
+---
+
+# 新闻聚合 Skill
+
+## When to Activate
+- 用户说"新闻"、"今日热点"
+- 用户说"科技新闻"、"财经新闻"
+- 用户询问特定话题的最新消息
+
+## Workflow
+
+### 1. 确定新闻分类
+支持分类：
+- 科技 (tech)
+- 财经 (finance)
+- 体育 (sports)
+- 娱乐 (entertainment)
+- 社会 (society)
+- 默认显示全部
+
+### 2. 获取新闻
+\`\`\`javascript
+const news = await fetchNews({ category, limit: 10 });
+// 返回新闻列表
+\`\`\`
+
+### 3. 格式化输出
+显示标题、来源、时间，按时间排序
+
+### 4. 收藏功能（可选）
+用户说"收藏"时保存到本地
+
+## Examples
+
+```
+user: 今天的科技新闻
+assistant: 📰 今日科技新闻
+
+1. 🔥 ChatGPT 发布新版本
+   36氪 · 2小时前
+
+2. 📱 苹果 Vision Pro 2 曝光
+   IT之家 · 5小时前
+
+3. 🚗 特斯拉自动驾驶获许可
+   电动邦 · 昨天
+
+回复编号查看详情，或说"收藏"保存
+
+user: 收藏第2条
+assistant: ✅ 已收藏「苹果 Vision Pro 2 曝光」
+```
+
+## Notes
+- 使用 RSS 或新闻 API 获取数据
+- 缓存新闻列表 30 分钟
+- 支持关键词搜索</code></pre>
+        </div>
+
+        <!-- RSS 获取新闻 -->
+        <div class="detail-card">
+          <h3>📡 使用 RSS 获取新闻</h3>
+          <p>RSS 是获取新闻最简单的方式，无需 API Key：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * RSS 新闻源配置
+ */
+const RSS_SOURCES = {
+  tech: [
+    'https://36kr.com/feed',
+    'https://www.ifairer.com/feed/',
+    'https://feeds.appinn.com/appinn/'
+  ],
+  finance: [
+    'https://36kr.com/feed/search/%E9%87%91%E8%9E%8D',
+    'https://wallstreetcn.com/rss'
+  ],
+  default: [
+    'https://www.zhihu.com/rss'
+  ]
+};
+
+/**
+ * 获取新闻列表
+ */
+async function fetchNews({ category = 'default', limit = 10 } = {}) {
+  const sources = RSS_SOURCES[category] || RSS_SOURCES.default;
+  const allNews = [];
+
+  for (const url of sources) {
+    try {
+      const feed = await parseRSS(url);
+      allNews.push(...feed.items.slice(0, limit));
+    } catch (e) {
+      console.error(\`Failed to fetch \${url}\`, e);
+    }
+  }
+
+  // 按时间排序
+  allNews.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+  return allNews.slice(0, limit).map(item => ({
+    title: item.title,
+    link: item.link,
+    description: stripHtml(item.contentSnippet || item.content),
+    source: extractSource(item.link),
+    pubDate: item.pubDate
+  }));
+}
+
+/**
+ * 格式化新闻列表
+ */
+function formatNewsList(news) {
+  return news.map((item, i) => {
+    const timeAgo = getTimeAgo(new Date(item.pubDate));
+    return [
+      \`\${i + 1}. \${item.title}\`,
+      \`   📰 \${item.source} · \${timeAgo}\`
+    ].join('\n');
+  }).join('\n\n');
+}</code></pre>
+          <div class="tip-box">
+            <div class="tip-box-title">💡 推荐 RSS 源</div>
+            <p>36氪、IT之家、少数派、知乎日报等都有稳定的 RSS 输出。</p>
+          </div>
+        </div>
+
+        <!-- 收藏功能 -->
+        <div class="detail-card">
+          <h3>⭐ 收藏功能</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 收藏新闻
+ */
+async function bookmarkNews(index) {
+  const news = await getCachedNews();
+  const item = news[index];
+
+  if (!item) throw new Error('新闻不存在');
+
+  const bookmarks = await getBookmarks();
+  bookmarks.unshift({
+    ...item,
+    bookmarkedAt: Date.now()
+  });
+
+  await saveBookmarks(bookmarks);
+  return \`✅ 已收藏「\${item.title}」\`;
+}
+
+/**
+ * 查看收藏列表
+ */
+async function showBookmarks() {
+  const bookmarks = await getBookmarks();
+
+  if (bookmarks.length === 0) {
+    return '📚 还没有收藏的新闻';
+  }
+
+  return [
+    '📚 我的收藏',
+    ...bookmarks.map((item, i) =>
+      \`\${i + 1}. \${item.title}\n   \${item.source} · 收藏于 \${formatDate(item.bookmarkedAt)}\`
+    )
+  ].join('\n\n');
+}</code></pre>
+        </div>
+
+        <!-- 目录结构 -->
+        <div class="detail-card">
+          <h3>📁 最终目录结构</h3>
+          <div class="command-box">~/.claude/skills/omc-learned/news-feed/
+├── SKILL.md       # Skill 定义
+└── src/
+    ├── rss.js     # RSS 解析
+    ├── fetch.js   # 新闻获取
+    ├── format.js  # 格式化输出
+    └── storage.js # 收藏存储
+</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+</body>
+</html>

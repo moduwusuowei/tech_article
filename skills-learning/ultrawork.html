@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultrawork - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">执行类 Skill</div>
+    <h1>Ultrawork</h1>
+    <p class="hero-subtitle">最大并行度执行，用 Token 换时间</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>⚡ 什么是 Ultrawork</h3>
+        <p>Ultrawork 是一个并行执行技能，核心理念是"用更多的 Token 换取更短的时间"。当你有多个独立的子任务时，Ultrawork 会同时执行它们，而不是一个一个顺序执行。</p>
+        <p style="margin-top: 1rem;">就像建筑施工：多台起重机同时工作比一台一台来快得多。Ultrawork 启动多个并行 agent，最大化利用计算资源。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>多个独立文件修改</strong>：同时修改用户、订单、产品三个模块</li>
+          <li><strong>多文件测试编写</strong>：同时为多个模块编写测试</li>
+          <li><strong>批量重构</strong>：同时重构多个相似的文件</li>
+          <li><strong>并行代码生成</strong>：同时生成多个 API 端点</li>
+          <li><strong>文档批量生成</strong>：同时生成多个模块的文档</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：批量实现 API</div>
+          <p>用户说："ultrawork 实现用户管理的所有 API"</p>
+          <p>Ultrawork 同时执行：</p>
+          <p>• Agent 1: 创建用户 API</p>
+          <p>• Agent 2: 更新用户 API</p>
+          <p>• Agent 3: 删除用户 API</p>
+          <p>• Agent 4: 查询用户 API</p>
+          <p>• Agent 5: 列表用户 API</p>
+          <p>原本 5 小时的工作，30 分钟完成</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">ultrawork "实现 src/features 下的所有功能"</div>
+        <p>指定并行度：</p>
+        <div class="command-box">ultrawork --parallel 4 "批量实现 API"</div>
+        <p>带任务列表：</p>
+        <div class="command-box">ultrawork "实现：用户模块、订单模块、支付模块"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚙️ 工作原理</h3>
+        <p>Ultrawork 采用最大并行执行：</p>
+        <ul class="styled-list">
+          <li><strong>任务分解</strong>：把大任务拆成独立子任务</li>
+          <li><strong>并行调度</strong>：启动多个 agent 同时执行</li>
+          <li><strong>结果汇总</strong>：收集所有子任务的结果</li>
+          <li><strong>冲突处理</strong>：处理可能的文件冲突</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 最大并行度</div>
+          <p>Ultrawork 默认支持最多 6 个并行 agent。可以通过参数调整，但需要考虑上下文限制。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>只适合独立任务</strong>：有依赖关系的任务不能并行</li>
+          <li><strong>Token 消耗大</strong>：多个 agent 并行消耗较多 token</li>
+          <li><strong>冲突风险</strong>：修改同一文件可能导致冲突</li>
+          <li><strong>上下文限制</strong>：过多并行可能导致上下文溢出</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 不要用 Ultrawork 的场景</div>
+          <p>单个顺序任务 | 紧密耦合需要共享状态 | Token 预算有限</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

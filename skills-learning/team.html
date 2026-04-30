@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html" class="active">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">执行类 Skill</div>
+    <h1>Team</h1>
+    <p class="hero-subtitle">多 Agent 协调并行执行，效率倍增</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>👥 什么是 Team</h3>
+        <p>Team 是一个多 Agent 协同执行技能。它会启动多个专业化的 agent，分别负责不同的任务，协同工作完成复杂项目。</p>
+        <p style="margin-top: 1rem;">就像一个公司有不同部门一样：产品经理规划、工程师开发、测试人员验证。Team 让这些角色同时工作。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>大型项目开发</strong>：前后端同时开发，多模块并行推进</li>
+          <li><strong>代码审查</strong>：多个视角同时审查（安全、性能、风格）</li>
+          <li><strong>需求分析</strong>：产品、技术，用户多角度分析</li>
+          <li><strong>系统设计</strong>：架构师、数据库专家、运维专家同时参与</li>
+          <li><strong>完整功能交付</strong>：规划→开发→测试→文档一条龙</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：开发电商系统</div>
+          <p>用户说："team 开发电商后端 API"</p>
+          <p>Team 自动分配角色：</p>
+          <p>• <strong>Planner Agent</strong>：分析需求，拆分任务</p>
+          <p>• <strong>Backend Agent</strong>：实现 API 接口</p>
+          <p>• <strong>Database Agent</strong>：设计数据模型</p>
+          <p>• <strong>Test Agent</strong>：编写测试用例</p>
+          <p>• <strong>Review Agent</strong>：代码审查</p>
+          <p>各 agent 并行工作，结果汇总</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">team "开发用户模块"</div>
+        <p>带团队配置：</p>
+        <div class="command-box">team --agents planner,executor,test-engineer "重构订单服务"</div>
+        <p>指定计划文件：</p>
+        <div class="command-box">team ".omc/plans/prd-xxx.md"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚙️ 工作原理</h3>
+        <p>Team 采用分阶段流水线：</p>
+        <ul class="styled-list">
+          <li><strong>team-plan</strong>：任务分解和规划</li>
+          <li><strong>team-prd</strong>：需求澄清和验收标准</li>
+          <li><strong>team-exec</strong>：并行执行各个子任务</li>
+          <li><strong>team-verify</strong>：验证执行结果</li>
+          <li><strong>team-fix</strong>：修复问题（可选循环）</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 并行度控制</div>
+          <p>默认最多 6 个并行 agent。支持独立任务并行执行，有依赖关系的任务按顺序执行。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>📊 团队组成</h3>
+        <p>常见的团队配置：</p>
+        <div class="example-box">
+          <div class="example-box-title">功能开发团队</div>
+          <p>analyst → planner → executor → test-engineer → code-reviewer → verifier</p>
+        </div>
+        <div class="example-box">
+          <div class="example-box-title">Bug 调查团队</div>
+          <p>explore + debugger + executor + test-engineer + verifier</p>
+        </div>
+        <div class="example-box">
+          <div class="example-box-title">代码审查团队</div>
+          <p>style-reviewer + code-reviewer + api-reviewer + security-reviewer</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>任务需要可拆分</strong>：Team 适合可以分解为独立子任务的项目</li>
+          <li><strong>上下文共享</strong>：通过状态文件共享进度和数据</li>
+          <li><strong>开销较大</strong>：多 agent 消耗更多 token，适合复杂任务</li>
+          <li><strong>优先级选择</strong>：推荐通过 Plan 先规划，再由 Team 执行</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 不要用 Team 的场景</div>
+          <p>单个简单任务（用 ralph 或直接执行即可）| 需要共享大量上下文的紧密耦合任务</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

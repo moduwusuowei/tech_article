@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>待办事项 Skill - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="tutorial.html">天气教程</a></li>
+        <li><a href="tutorial-todo.html" class="active">待办教程</a></li>
+        <li><a href="tutorial-expense.html">记账教程</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto; background: linear-gradient(135deg, #1a1a2e, #0f0f1a);">
+    <div class="hero-badge">🎓 实战教程</div>
+    <h1>待办事项 Skill</h1>
+    <p class="hero-subtitle">从 0 到 1 实现任务管理与提醒</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+      <div style="max-width: 900px; margin: 0 auto;">
+
+        <!-- 项目目标 -->
+        <div class="detail-card">
+          <h3>📋 项目目标</h3>
+          <p>创建一个待办事项 Skill，功能包括：</p>
+          <ul class="styled-list">
+            <li>添加、完成、删除待办事项</li>
+            <li>按优先级分类管理</li>
+            <li>截止日期提醒</li>
+            <li>任务统计和回顾</li>
+          </ul>
+          <div class="example-box">
+            <div class="example-box-title">🌰 使用效果</div>
+            <p>用户说："帮我记一下，明天要交报告"</p>
+            <p>Skill："✅ 已添加待办：明天要交报告 (优先级：中) ⏰ 明天"</p>
+            <p>...</p>
+            <p>用户说："我的待办"</p>
+            <p>Skill："</p>
+            <p>📋 你的待办事项 (3项)</p>
+            <p>━━━━━━━━━━━━━━━━━</p>
+            <p>🔴 高优先级 (1)</p>
+            <p>  1. 完成项目方案 - 今天 17:00</p>
+            <p>🟡 中优先级 (1)</p>
+            <p>  2. 明天要交报告 - 明天</p>
+            <p>🟢 低优先级 (1)</p>
+            <p>  3. 阅读文档 - 暂无截止</p>
+            <p>━━━━━━━━━━━━━━━━━"</p>
+          </div>
+        </div>
+
+        <!-- SKILL.md -->
+        <div class="detail-card">
+          <h3>📝 SKILL.md 定义</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>---
+name: todo
+description: 轻量级待办事项管理，支持优先级和截止日期
+triggers:
+  - "待办"
+  - "todo"
+  - "任务"
+  - "记一下"
+argument-hint: "<action> <content>"
+level: 2
+---
+
+# 待办事项 Skill
+
+## When to Activate
+- 用户说"待办"、"我的任务"
+- 用户说"记一下..."添加任务
+- 用户说"完成了..."标记完成
+- 用户询问"有什么待办"
+
+## Actions
+
+### add - 添加待办
+"帮我记一下，明天要交报告"
+→ 创建新待办，保存到本地
+
+### list - 查看列表
+"我的待办"
+→ 按优先级显示所有待办
+
+### complete - 完成
+"完成了第一个" 或 "完成了项目方案"
+→ 标记为已完成
+
+### delete - 删除
+"删除第二个" 或 "删掉那个报告"
+→ 删除待办
+
+### clear - 清除已完成
+"清除已完成"
+→ 删除所有已完成项目
+
+## Examples
+
+```
+user: 帮我记一下，明天要交报告
+assistant: ✅ 已添加
+📝 内容：明天要交报告
+⏰ 截止：明天
+📊 优先级：中
+
+user: 我的待办
+assistant: 📋 待办事项
+
+🔴 高优先级 (1)
+  1. 完成项目方案 - 今天 17:00
+
+🟡 中优先级 (2)
+  2. 明天要交报告 - 明天
+  3. 跟进客户 - 本周
+
+🟢 低优先级 (1)
+  4. 阅读文档 - 暂无截止
+```
+
+## Notes
+- 数据存储在浏览器 localStorage
+- 可导出为 JSON 备份
+- 支持按内容搜索</code></pre>
+        </div>
+
+        <!-- 数据模型 -->
+        <div class="detail-card">
+          <h3>💾 数据模型</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 待办项数据结构
+ */
+const todoSchema = {
+  id: String,           // 唯一 ID
+  content: String,      // 待办内容
+  priority: String,    // 'high' | 'medium' | 'low'
+  dueDate: Date|null,  // 截止日期
+  completed: Boolean,  // 是否已完成
+  createdAt: Date,     // 创建时间
+  completedAt: Date|null // 完成时间
+};
+
+/**
+ * 存储结构
+ */
+const storage = {
+  todos: [],           // 待办列表
+  completedCount: 0,    // 已完成数量
+  lastModified: Date   // 最后修改时间
+};</code></pre>
+        </div>
+
+        <!-- 核心代码 -->
+        <div class="detail-card">
+          <h3>💻 核心代码实现</h3>
+          <p>待办管理 (<code>src/todo.js</code>)：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 添加待办
+ */
+async function addTodo(content, options = {}) {
+  const todo = {
+    id: crypto.randomUUID(),
+    content,
+    priority: options.priority || 'medium',
+    dueDate: options.dueDate || null,
+    completed: false,
+    createdAt: Date.now(),
+    completedAt: null
+  };
+
+  const todos = await getTodos();
+  todos.push(todo);
+  await saveTodos(todos);
+
+  return formatTodoAdded(todo);
+}
+
+/**
+ * 列出待办
+ */
+async function listTodos() {
+  const todos = await getTodos();
+  const activeTodos = todos.filter(t => !t.completed);
+
+  if (activeTodos.length === 0) {
+    return '🎉 太棒了！没有待办事项了';
+  }
+
+  // 按优先级分组
+  const byPriority = {
+    high: activeTodos.filter(t => t.priority === 'high'),
+    medium: activeTodos.filter(t => t.priority === 'medium'),
+    low: activeTodos.filter(t => t.priority === 'low')
+  };
+
+  let output = '📋 待办事项\n━━━━━━━━━━━━━━━━━\n';
+
+  if (byPriority.high.length) {
+    output += `\n🔴 高优先级 (\${byPriority.high.length})\n`;
+    byPriority.high.forEach((t, i) => {
+      output += \`  \${i + 1}. \${t.content}\`;
+      if (t.dueDate) output += \` - \${formatDate(t.dueDate)}\`;
+      output += '\n';
+    });
+  }
+
+  // ... 中低优先级同理
+
+  return output;
+}
+
+/**
+ * 完成待办
+ */
+async function completeTodo(identifier) {
+  const todos = await getTodos();
+  const index = findTodoIndex(todos, identifier);
+
+  if (index === -1) {
+    throw new Error('找不到这个待办');
+  }
+
+  todos[index].completed = true;
+  todos[index].completedAt = Date.now();
+  await saveTodos(todos);
+
+  return \`✅ 完成！"\${todos[index].content}" 已标记完成\`;
+}</code></pre>
+        </div>
+
+        <!-- 优先级识别 -->
+        <div class="detail-card">
+          <h3>🏷️ 优先级识别</h3>
+          <p>从自然语言中识别优先级：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 从文本中识别优先级
+ */
+function extractPriority(text) {
+  const lower = text.toLowerCase();
+
+  if (/紧急|紧急|马上|立刻|asap/.test(lower)) {
+    return 'high';
+  }
+
+  if (/重要|必须|尽快/.test(lower)) {
+    return 'medium';
+  }
+
+  return 'low';
+}
+
+/**
+ * 从文本中识别截止日期
+ */
+function extractDueDate(text) {
+  const now = new Date();
+
+  // 今天/明天
+  if (/今天/.test(text)) {
+    return now;
+  }
+
+  if (/明天/.test(text)) {
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow;
+  }
+
+  // 本周/下周
+  if (/本周/.test(text)) {
+    const friday = new Date(now);
+    while (friday.getDay() !== 5) friday.setDate(friday.getDate() + 1);
+    return friday;
+  }
+
+  // 特定日期 "4月30日"
+  const dateMatch = text.match(/(\d+)月(\d+)日/);
+  if (dateMatch) {
+    const date = new Date();
+    date.setMonth(parseInt(dateMatch[1]) - 1);
+    date.setDate(parseInt(dateMatch[2]));
+    return date;
+  }
+
+  return null;
+}</code></pre>
+        </div>
+
+        <!-- 目录结构 -->
+        <div class="detail-card">
+          <h3>📁 最终目录结构</h3>
+          <div class="command-box">~/.claude/skills/omc-learned/todo/
+├── SKILL.md       # Skill 定义
+└── src/
+    ├── todo.js     # 待办管理
+    ├── parser.js  # 意图/时间识别
+    ├── format.js  # 输出格式化
+    └── storage.js # 数据存储
+</div>
+          <div class="tip-box">
+            <div class="tip-box-title">💡 进阶功能</div>
+            <p>可以添加：重复任务、子任务、任务分类、批量操作等高级功能。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+</body>
+</html>

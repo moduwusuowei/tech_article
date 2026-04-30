@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remember - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">工具类 Skill</div>
+    <h1>Remember</h1>
+    <p class="hero-subtitle">持久化项目知识，避免重复踩坑</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>🧠 什么是 Remember</h3>
+        <p>Remember 是一个知识持久化技能。它的核心理念是"一次踩坑，永不复踩"——把项目中积累的经验和问题解决方案保存下来，供后续使用。</p>
+        <p style="margin-top: 1rem;">当你发现一个难以解决的问题时，Remember 会帮你把解决方案记录下来。下次遇到同类问题时，AI 会自动查找并应用这些经验。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>解决复杂 bug 后</strong>：把根因和解决方案记录下来</li>
+          <li><strong>发现代码模式</strong>：项目中特定模式的正确用法</li>
+          <li><strong>踩坑记录</strong>：某个第三方库的坑及其绕过方法</li>
+          <li><strong>最佳实践</strong>：团队形成的新规范和约定</li>
+          <li><strong>环境配置</strong>：特定环境下的配置要点</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：记录数据库坑</div>
+          <p>发现："MongoDB 在 Docker 中性能很差"</p>
+          <p>原因："Docker 网络模式导致连接池问题"</p>
+          <p>解决方案："在 docker-compose 中使用 network_mode: host"</p>
+          <p>使用 Remember 保存后：</p>
+          <p>下次配置 MongoDB 时，AI 会自动检查并建议使用 host 模式</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">remember "MongoDB Docker 性能问题"</div>
+        <p>从对话提取：</p>
+        <div class="command-box">remember --learn "提取刚解决的认证问题方案"</div>
+        <p>查询记忆：</p>
+        <div class="command-box">remember --query "数据库"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>💾 存储结构</h3>
+        <p>Remember 会把知识保存到：</p>
+        <ul class="styled-list">
+          <li><strong>用户级记忆</strong>：~/.claude/skills/omc-learned/</li>
+          <li><strong>项目级记忆</strong>：.omc/skills/</li>
+          <li><strong>会话记忆</strong>：.omc/notepad.md</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 自动应用</div>
+          <p>Remember 保存的知识会在相关场景自动触发，不需要每次手动查找。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>需要具体</strong>：记录要具体，不能太泛泛</li>
+          <li><strong>需要上下文</strong>：注明在什么情况下适用</li>
+          <li><strong>定期整理</strong>：记忆会积累，需要定期清理</li>
+          <li><strong>项目 vs 用户</strong>：项目相关的放项目，个人通用的放用户</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 记录技巧</div>
+          <p>好的记忆条目包含：问题现象、根因分析、解决方案、适用场景。不要只记"怎么修"，要记"为什么这样修"。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

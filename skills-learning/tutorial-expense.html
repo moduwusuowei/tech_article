@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>记账大师 Skill - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="tutorial.html">天气教程</a></li>
+        <li><a href="tutorial-stock.html">股票教程</a></li>
+        <li><a href="tutorial-expense.html" class="active">记账教程</a></li>
+        <li><a href="tutorial-reminder.html">提醒教程</a></li>
+        <li><a href="tutorial-news.html">新闻教程</a></li>
+        <li><a href="tutorial-todo.html">待办教程</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto; background: linear-gradient(135deg, #1a1a2e, #0f0f1a);">
+    <div class="hero-badge">🎓 实战教程</div>
+    <h1>记账大师 Skill</h1>
+    <p class="hero-subtitle">从 0 到 1 实现智能记账与消费分析</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+      <div style="max-width: 900px; margin: 0 auto;">
+
+        <!-- 项目目标 -->
+        <div class="detail-card">
+          <h3>📋 项目目标</h3>
+          <p>创建一个记账大师 Skill，功能包括：</p>
+          <ul class="styled-list">
+            <li>快速记录收支</li>
+            <li>自动分类消费</li>
+            <li>月度消费统计</li>
+            <li>消费趋势分析</li>
+            <li>预算提醒</li>
+          </ul>
+          <div class="example-box">
+            <div class="example-box-title">🌰 使用效果</div>
+            <p>用户说："中午吃饭花了58块"</p>
+            <p>Skill："✅ 记录成功</p>
+            <p>   💰 支出：58.00 元</p>
+            <p>   🏷️ 分类：餐饮</p>
+            <p>   📅 2026-04-28"</p>
+            <p>...</p>
+            <p>用户说："这个月花了多少钱"</p>
+            <p>Skill："📊 4月消费报告</p>
+            <p>━━━━━━━━━━━━━━━━━</p>
+            <p>💸 总支出：3,892.00 元</p>
+            <p>📈 日均：130.00 元</p>
+            <p>━━━━━━━━━━━━━━━━━</p>
+            <p>餐饮 1,245 (32%) ████████</p>
+            <p>交通 680 (17%) ████</p>
+            <p>购物 956 (25%) ██████</p>
+            <p>娱乐 520 (13%) ███</p>
+            <p>其他 491 (13%) ███</p>
+            <p>━━━━━━━━━━━━━━━━━</p>
+            <p>⚠️ 餐饮超支 15%"</p>
+          </div>
+        </div>
+
+        <!-- SKILL.md -->
+        <div class="detail-card">
+          <h3>📝 SKILL.md 定义</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>---
+name: expense-tracker
+description: 智能记账与消费分析，支持自然语言输入和可视化统计
+triggers:
+  - "花了"
+  - "记账"
+  - "消费"
+  - "支出"
+  - "expense"
+argument-hint: "<amount> <category>"
+level: 2
+---
+
+# 记账大师 Skill
+
+## When to Activate
+- 用户说"花了XX"、"消费了XX"
+- 用户询问"这个月花了多少"
+- 用户说"设置预算"
+- 用户询问"X类花了多少"
+
+## Actions
+
+### add - 记录支出
+"中午吃饭58块" → 解析金额58，分类餐饮
+
+### add_income - 记录收入
+"今天工资入账8000" → 记录收入
+
+### stats - 月度统计
+"这个月花了多少" → 显示月度消费报告
+
+### category_stats - 分类统计
+"餐饮花了多少" → 显示餐饮分类消费
+
+### set_budget - 设置预算
+"设置餐饮预算2000" → 设置分类预算
+
+### trends - 趋势分析
+"最近消费趋势" → 显示周/月趋势图
+
+## Examples
+
+```
+user: 中午吃饭58块
+assistant: ✅ 记录成功
+   💰 支出：58.00 元
+   🏷️ 分类：餐饮
+   📅 2026-04-28
+
+user: 这个月花了多少
+assistant: 📊 4月消费报告
+💸 总支出：3,892.00 元
+📈 日均：130.00 元
+   餐饮 1,245 (32%)
+   交通 680 (17%)
+```
+
+## Notes
+- 数据存储在 IndexedDB，支持持久化
+- 支持按月/周/日维度统计
+- 可导出CSV报表</code></pre>
+        </div>
+
+        <!-- 数据模型 -->
+        <div class="detail-card">
+          <h3>💾 数据模型</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 交易记录结构
+ */
+const transactionSchema = {
+  id: String,              // 唯一 ID
+  type: 'expense' | 'income',  // 类型
+  amount: Number,          // 金额
+  category: String,        // 分类
+  note: String,            // 备注
+  date: Date,             // 日期
+  createdAt: Date          // 创建时间
+};
+
+/**
+ * 分类定义
+ */
+const CATEGORIES = {
+  expense: [
+    { name: '餐饮', patterns: ['吃饭', '餐饮', '外卖', '美食'] },
+    { name: '交通', patterns: ['打车', '地铁', '公交', '加油', '交通'] },
+    { name: '购物', patterns: ['买', '购物', '衣服', '网购'] },
+    { name: '娱乐', patterns: ['电影', '游戏', '娱乐', 'K歌'] },
+    { name: '居住', patterns: ['房租', '水电', '物业', '居住'] },
+    { name: '医疗', patterns: ['药', '医院', '医疗'] },
+    { name: '其他', patterns: [] }
+  ],
+  income: [
+    { name: '工资', patterns: ['工资', '薪资', '薪水'] },
+    { name: '奖金', patterns: ['奖金', 'bonus'] },
+    { name: '投资', patterns: ['投资收益', '分红'] },
+    { name: '其他', patterns: [] }
+  ]
+};
+
+/**
+ * 存储结构
+ */
+const storage = {
+  transactions: [],        // 交易列表
+  budgets: {},            // 预算配置
+  lastModified: Date
+};</code></pre>
+        </div>
+
+        <!-- 核心代码 -->
+        <div class="detail-card">
+          <h3>💻 核心代码实现</h3>
+          <p>交易管理 (<code>src/expense.js</code>)：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 添加交易记录
+ */
+async function addTransaction(input) {
+  const parsed = parseTransaction(input);
+
+  const transaction = {
+    id: crypto.randomUUID(),
+    type: parsed.type,
+    amount: parsed.amount,
+    category: parsed.category,
+    note: parsed.note,
+    date: new Date(),
+    createdAt: Date.now()
+  };
+
+  const transactions = await getTransactions();
+  transactions.push(transaction);
+  await saveTransactions(transactions);
+
+  return formatAdded(transaction);
+}
+
+/**
+ * 解析自然语言输入
+ */
+function parseTransaction(input) {
+  // 提取金额
+  const amountMatch = input.match(/(\d+(?:\.\d+)?)\s*(?:块|元)?/);
+  const amount = amountMatch ? parseFloat(amountMatch[1]) : 0;
+
+  // 识别收入/支出
+  const type = /入账|收入|到账|发工资/.test(input) ? 'income' : 'expense';
+
+  // 识别分类
+  const category = classifyTransaction(input, type);
+
+  return { amount, type, category, note: input };
+}
+
+/**
+ * 分类识别
+ */
+function classifyTransaction(input, type) {
+  const categories = CATEGORIES[type];
+
+  for (const cat of categories) {
+    for (const pattern of cat.patterns) {
+      if (input.includes(pattern)) {
+        return cat.name;
+      }
+    }
+  }
+
+  return '其他';
+}</code></pre>
+        </div>
+
+        <!-- 统计功能 -->
+        <div class="detail-card">
+          <h3>📊 统计与报告</h3>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * 月度消费报告
+ */
+async function getMonthlyReport(year, month) {
+  const transactions = await getTransactions();
+  const startDate = new Date(year, month - 1, 1);
+  const endDate = new Date(year, month, 0);
+
+  // 筛选当月交易
+  const monthlyTxns = transactions.filter(t =>
+    t.date >= startDate && t.date <= endDate
+  );
+
+  // 按分类统计
+  const byCategory = {};
+  let total = 0;
+
+  for (const txn of monthlyTxns) {
+    if (txn.type === 'expense') {
+      byCategory[txn.category] = (byCategory[txn.category] || 0) + txn.amount;
+      total += txn.amount;
+    }
+  }
+
+  // 生成报告
+  let report = '📊 ' + formatYearMonth(year, month) + '消费报告\n';
+  report += '━━━━━━━━━━━━━━━━━\n';
+  report += '💸 总支出：' + formatAmount(total) + ' 元\n';
+  report += '📈 日均：' + formatAmount(total / endDate.getDate()) + ' 元\n';
+  report += '━━━━━━━━━━━━━━━━━\n';
+
+  // 分类详情
+  const sorted = Object.entries(byCategory)
+    .sort((a, b) => b[1] - a[1]);
+
+  for (const [cat, amount] of sorted) {
+    const pct = ((amount / total) * 100).toFixed(0);
+    const bar = '█'.repeat(Math.floor(pct / 5));
+    report += cat.padEnd(4) + ' ' + formatAmount(amount).padStart(7);
+    report += ' (' + pct + '%) ' + bar + '\n';
+  }
+
+  return report;
+}
+
+/**
+ * 预算超支检查
+ */
+async function checkBudgetAlert(total, category) {
+  const budgets = await getBudgets();
+  const budget = budgets[category];
+
+  if (!budget) return null;
+
+  const spent = await getCategoryTotal(category);
+  const pct = (spent / budget * 100).toFixed(0);
+
+  if (spent > budget) {
+    return '⚠️ ' + category + '超支 ' + pct + '%';
+  } else if (spent > budget * 0.8) {
+    return '💡 ' + category + '已使用 ' + pct + '%';
+  }
+
+  return null;
+}</code></pre>
+        </div>
+
+        <!-- 持久化存储 -->
+        <div class="detail-card">
+          <h3>💾 IndexedDB 存储</h3>
+          <p>使用 IndexedDB 实现数据持久化：</p>
+          <pre style="background: #0d0d15; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;">
+<code>/**
+ * IndexedDB 数据库操作
+ */
+const DB_NAME = 'expense_tracker';
+const DB_VERSION = 1;
+const STORE_NAME = 'transactions';
+
+let db = null;
+
+/**
+ * 打开数据库
+ */
+async function openDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      db = request.result;
+      resolve(db);
+    };
+
+    request.onupgradeneeded = (event) => {
+      const database = event.target.result;
+      if (!database.objectStoreNames.contains(STORE_NAME)) {
+        const store = database.createObjectStore(STORE_NAME, { keyPath: 'id' });
+        store.createIndex('date', 'date');
+        store.createIndex('category', 'category');
+        store.createIndex('type', 'type');
+      }
+    };
+  });
+}
+
+/**
+ * 保存交易记录
+ */
+async function saveTransactions(transactions) {
+  const database = await openDB();
+  const tx = database.transaction(STORE_NAME, 'readwrite');
+  const store = tx.objectStore(STORE_NAME);
+
+  // 清除旧数据
+  store.clear();
+
+  // 添加新数据
+  for (const t of transactions) {
+    store.add(t);
+  }
+
+  return new Promise((resolve, reject) => {
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+/**
+ * 获取所有交易
+ */
+async function getTransactions() {
+  const database = await openDB();
+  const tx = database.transaction(STORE_NAME, 'readonly');
+  const store = tx.objectStore(STORE_NAME);
+
+  return new Promise((resolve, reject) => {
+    const request = store.getAll();
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}</code></pre>
+        </div>
+
+        <!-- 目录结构 -->
+        <div class="detail-card">
+          <h3>📁 最终目录结构</h3>
+          <div class="command-box">~/.claude/skills/omc-learned/expense-tracker/
+├── SKILL.md       # Skill 定义
+└── src/
+    ├── expense.js  # 交易管理
+    ├── parser.js  # 输入解析
+    ├── stats.js   # 统计分析
+    ├── storage.js # IndexedDB 存储
+    └── format.js  # 输出格式化
+</div>
+          <div class="tip-box">
+            <div class="tip-box-title">💡 进阶功能</div>
+            <p>可以添加：多设备同步、预算提醒推送、消费趋势图表、智能预算建议等功能。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slop Cleaner - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">工具类 Skill</div>
+    <h1>AI Slop Cleaner</h1>
+    <p class="hero-subtitle">清理 AI 生成的冗余代码，还原代码本质</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>🧹 什么是 AI Slop Cleaner</h3>
+        <p>AI Slop Cleaner 是一个代码清理技能，专门用于清理 AI 生成代码中常见的问题：死代码、重复代码、过度抽象、无用注释、冗余结构等。</p>
+        <p style="margin-top: 1rem;">当 AI 生成代码时，往往会"过度补偿"——添加看似有用但实际冗余的代码。AI Slop Cleaner 帮你识别并清理这些"代码垃圾"。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>代码审查后</strong>：发现大量冗余代码需要清理</li>
+          <li><strong>重构前</strong>：清理代码为重构做准备</li>
+          <li><strong>Code Review 改进</strong>：Review 发现的问题需要清理</li>
+          <li><strong>代码接手</strong>：接手别人的 AI 生成代码</li>
+          <li><strong>日常维护</strong>：定期清理代码库中的技术债务</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：清理聊天模块</div>
+          <p>用户说："ai-slop-cleaner 清理聊天模块"</p>
+          <p>AI Slop Cleaner 发现问题：</p>
+          <p>• 重复的 `formatMessage` 函数（3处）</p>
+          <p>• 从不调用的 `legacyFormatMessage`</p>
+          <p>• 过度封装的 `ChatUtils` 类</p>
+          <p>• 每个函数都有 10 行 JSDoc 注释</p>
+          <p>• 6 个未使用的导入</p>
+          <p>自动清理后代码减少 40%</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">ai-slop-cleaner "清理 src/utils 目录"</div>
+        <p>指定文件：</p>
+        <div class="command-box">ai-slop-cleaner "清理 user.ts"</div>
+        <p>带审查模式（只检查不修改）：</p>
+        <div class="command-box">ai-slop-cleaner --review "审查 api 目录"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>🧹 清理清单</h3>
+        <p>AI Slop Cleaner 会检查和清理：</p>
+        <ul class="styled-list">
+          <li><strong>死代码</strong>：从不调用的函数、未使用的变量</li>
+          <li><strong>重复代码</strong>：功能相同的重复函数</li>
+          <li><strong>过度抽象</strong>：只有一处调用的"通用"函数</li>
+          <li><strong>冗余注释</strong>：显而易见、无需解释的注释</li>
+          <li><strong>无用导入</strong>：导入但未使用的模块</li>
+          <li><strong>过度工程</strong>：过度设计的模式和不必要的复杂性</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 安全机制</div>
+          <p>AI Slop Cleaner 使用 writer/reviewer 分离机制：先修改，再独立审查，防止自己改自己审的问题。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>需要测试保护</strong>：清理前最好有测试覆盖</li>
+          <li><strong>有界修改</strong>：每次只做有限修改，便于 review</li>
+          <li><strong>保守策略</strong>：不确定的代码会保留</li>
+          <li><strong>需要人工确认</strong>：重大删除会暂停等待确认</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 不要用 AI Slop Cleaner 的场景</div>
+          <p>没有测试覆盖的代码 | 刚生成的代码需要确认功能 | 代码风格问题（用 linter）</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

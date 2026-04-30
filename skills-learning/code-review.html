@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Review - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">质量类 Skill</div>
+    <h1>Code Review</h1>
+    <p class="hero-subtitle">全面的代码质量检查，不放过任何问题</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>🔍 什么是 Code Review</h3>
+        <p>Code Review 是一个全面的代码审查技能。它会从多个角度审查代码：逻辑缺陷、安全漏洞、性能问题、代码风格、API 设计等。</p>
+        <p style="margin-top: 1rem;">就像请了一个资深工程师来审查代码，但比人工审查更全面、更一致。Code Review 不会疲劳，每次审查标准都保持一致。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 审查维度</h3>
+        <ul class="styled-list">
+          <li><strong>逻辑缺陷</strong>：边界条件、空指针、逻辑错误</li>
+          <li><strong>安全漏洞</strong>：SQL 注入、XSS、敏感信息泄露</li>
+          <li><strong>性能问题</strong>：N+1 查询、内存泄漏、循环优化</li>
+          <li><strong>代码风格</strong>：命名规范、代码结构、可读性</li>
+          <li><strong>API 设计</strong>：接口一致性、错误处理、版本兼容</li>
+          <li><strong>测试覆盖</strong>：单元测试、边界测试、覆盖率</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：PR 审查</div>
+          <p>开发者提交了一个登录 API 的 PR</p>
+          <p>Code Review 发现问题：</p>
+          <p>❌ 安全：密码明文存储（应 hash）</p>
+          <p>❌ 安全：登录接口无限次数尝试</p>
+          <p>❌ 逻辑：token 过期未验证</p>
+          <p>❌ 性能：每次请求都查数据库</p>
+          <p>⚠️ 风格：函数超过 100 行</p>
+          <p>⚠️ 测试：边界情况未覆盖</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">code-review "审查 src/api 目录"</div>
+        <p>审查单个文件：</p>
+        <div class="command-box">code-review "审查 auth.ts"</div>
+        <p>审查 PR：</p>
+        <div class="command-box">code-review --pr 123</div>
+        <p>带严重级别：</p>
+        <div class="command-box">code-review --severity "审查安全问题"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>🔍 审查类型</h3>
+        <ul class="styled-list">
+          <li><strong>Style Reviewer</strong>：格式、命名、风格规范</li>
+          <li><strong>Code Reviewer</strong>：全面代码质量</li>
+          <li><strong>API Reviewer</strong>：接口设计、兼容性</li>
+          <li><strong>Security Reviewer</strong>：安全漏洞检测</li>
+          <li><strong>Performance Reviewer</strong>：性能问题检测</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 可以组合使用</div>
+          <p>code-review 默认是全面审查，也可以单独指定某种审查类型。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>需要代码上下文</strong>：最好能访问完整代码</li>
+          <li><strong>不是银弹</strong>：无法发现业务逻辑错误</li>
+          <li><strong>有优先级</strong>：P0 是必须修复的，P3 是建议</li>
+          <li><strong>需要测试环境</strong>：有些问题需要实际运行才能发现</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 优先修复顺序</div>
+          <p>P0（安全/致命）→ P1（功能错误）→ P2（性能/可用性）→ P3（代码风格）</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

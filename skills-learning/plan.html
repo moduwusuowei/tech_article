@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html" class="active">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">规划类 Skill</div>
+    <h1>Plan</h1>
+    <p class="hero-subtitle">战略规划与需求分析，从模糊到清晰</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>📋 什么是 Plan</h3>
+        <p>Plan 是一个战略规划技能。它的核心作用是把模糊的需求变成清晰可执行的计划。</p>
+        <p style="margin-top: 1rem;">Plan 有多种模式：交互式访谈（Interview）、直接规划（Direct）、共识规划（Consensus）、计划审查（Review）。根据任务复杂度选择合适的模式。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 四种模式</h3>
+        <ul class="styled-list">
+          <li><strong>Interview</strong>（默认）：交互式提问，逐步澄清需求</li>
+          <li><strong>Direct</strong>：直接生成计划，适合需求已清晰的情况</li>
+          <li><strong>Consensus</strong>：多方评审达成共识，适合高风险决策</li>
+          <li><strong>Review</strong>：审查现有计划的质量</li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>模糊需求</strong>："我想做个 todo 应用" → 澄清：目标用户、平台、核心功能</li>
+          <li><strong>大型重构</strong>：规划迁移步骤、风险点、回滚方案</li>
+          <li><strong>技术选型</strong>：评估多个方案的优劣，做出决策</li>
+          <li><strong>PRD 生成</strong>：为新功能编写完整的产品需求文档</li>
+          <li><strong>计划审查</strong>：检查现有计划是否完整、可行</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：开发新功能</div>
+          <p>用户说："plan 开发一个聊天功能"</p>
+          <p>Plan 进入 Interview 模式：</p>
+          <p>Q1: "这个聊天功能是私聊还是群聊？"</p>
+          <p>A1: "主要是私聊"</p>
+          <p>Q2: "需要支持文件传输吗？"</p>
+          <p>A2: "先只需要文字和图片"</p>
+          <p>... 逐步澄清后生成完整计划</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">plan "开发聊天功能"</div>
+        <p>直接模式（跳过访谈）：</p>
+        <div class="command-box">plan --direct "添加缓存功能"</div>
+        <p>共识模式（多方评审）：</p>
+        <div class="command-box">plan --consensus "重构认证模块"</div>
+        <p>审查模式：</p>
+        <div class="command-box">plan --review ".omc/plans/xxx.md"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚙️ 工作原理</h3>
+        <p>Plan 会生成标准化的计划文件：</p>
+        <ul class="styled-list">
+          <li><strong>Requirements Summary</strong>：需求概要</li>
+          <li><strong>Acceptance Criteria</strong>：验收标准（可测试）</li>
+          <li><strong>Implementation Steps</strong>：实现步骤（含文件引用）</li>
+          <li><strong>Risks and Mitigations</strong>：风险和缓解措施</li>
+          <li><strong>Verification Steps</strong>：验证步骤</li>
+          <li><strong>ADR</strong>（Consensus 模式）：决策记录</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 输出位置</div>
+          <p>计划文件保存在 <code>.omc/plans/</code> 目录，可供后续的 ralph、team 等技能使用。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>🤝 Consensus 模式详解</h3>
+        <p>共识规划会经过三轮评审：</p>
+        <ul class="styled-list">
+          <li><strong>Planner</strong>：生成初稿计划</li>
+          <li><strong>Architect</strong>：架构评审，寻找设计缺陷</li>
+          <li><strong>Critic</strong>：质量评审，检查遗漏和风险</li>
+        </ul>
+        <p style="margin-top: 1rem;">如果 Critic 拒绝，会返回 Planner 修订，最多 5 轮迭代，直到达成共识。</p>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 何时用 Consensus</div>
+          <p>高风险决策：认证/安全模块、数据迁移、破坏性变更、公有 API 变更。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>不是编码</strong>：Plan 只规划，不写代码</li>
+          <li><strong>迭代提问</strong>：一次只问一个问题，让回答深入</li>
+          <li><strong>90%+ 可测试</strong>：验收标准必须具体可验证</li>
+          <li><strong>80%+ 引用</strong>：计划中 80% 以上的声明要有文件/行号引用</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 不要用 Plan 的场景</div>
+          <p>简单明确的任务（直接说"写一个 hello world"）| 只需要问一个问题的情况</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ralph - Skills 学堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <span>Skills 学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html" class="active">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 6rem 1.5rem 3rem; min-height: auto;">
+    <div class="hero-badge">执行类 Skill</div>
+    <h1>Ralph</h1>
+    <p class="hero-subtitle">持久化自引用循环执行，直到任务完成</p>
+  </section>
+
+  <section class="detail-content">
+    <div class="container">
+
+      <div class="detail-card">
+        <h3>🔄 什么是 Ralph</h3>
+        <p>Ralph 是一个持久化循环执行技能。当你需要完成一个复杂的多步骤任务时，Ralph 会自动持续执行，遇到问题自动修复，直到任务完成或达到最大迭代次数。</p>
+        <p style="margin-top: 1rem;">它的核心理念是："Don't stop until it's done"——不要停下来，直到完成。</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>📋 使用场景</h3>
+        <ul class="styled-list">
+          <li><strong>实现完整功能</strong>：需要修改多个文件、完成前后端联调的任务</li>
+          <li><strong>修复一系列 bug</strong>：需要持续调试、验证、修复的循环过程</li>
+          <li><strong>运行测试直到通过</strong>：反复运行测试，修复失败的用例</li>
+          <li><strong>构建完整项目</strong>：从零开始构建一个可运行的项目</li>
+          <li><strong>大型重构</strong>：涉及多个模块的重构工作</li>
+        </ul>
+        <div class="example-box">
+          <div class="example-box-title">🌰 场景示例：修复登录功能</div>
+          <p>用户说："ralph 修复登录失败的问题"</p>
+          <p>Ralph 会自动执行：</p>
+          <p>1. 分析登录流程代码</p>
+          <p>2. 发现 token 过期处理缺失</p>
+          <p>3. 修复 token 刷新逻辑</p>
+          <p>4. 运行测试验证</p>
+          <p>5. 测试失败？继续修复</p>
+          <p>6. 重复直到测试全部通过</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⌨️ 命令格式</h3>
+        <p>基础命令：</p>
+        <div class="command-box">ralph "完成用户登录功能"</div>
+        <p>带参数：</p>
+        <div class="command-box">ralph --max-iterations 10 "重构订单模块"</div>
+        <p>指定 plan：</p>
+        <div class="command-box">ralph ".omc/plans/prd-xxx.md"</div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚙️ 工作原理</h3>
+        <ul class="styled-list">
+          <li><strong>Plan First</strong>：先创建计划文件（PRD + Test Spec）</li>
+          <li><strong>Execute</strong>：按计划执行任务</li>
+          <li><strong>Verify</strong>：每步完成后验证结果</li>
+          <li><strong>Fix</strong>：发现问题自动修复</li>
+          <li><strong>Loop</strong>：循环直到完成或达到上限</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-box-title">💡 状态持久化</div>
+          <p>Ralph 会把状态保存到 <code>.omc/state/</code>，即使会话中断也能恢复继续执行。</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>⚠️ 注意事项</h3>
+        <ul class="styled-list">
+          <li><strong>有界循环</strong>：默认最多 20 次迭代，防止无限循环</li>
+          <li><strong>破坏性操作需确认</strong>：删除文件、重构等操作会暂停等待确认</li>
+          <li><strong>上下文限制</strong>：长任务可能需要 compact 压缩上下文</li>
+          <li><strong>适合复杂任务</strong>：简单任务用普通执行即可，不要用 ralph</li>
+        </ul>
+        <div class="warning-box">
+          <div class="warning-box-title">⚠️ 不要用 Ralph 的场景</div>
+          <p>问一个问题（直接回答）| 查看文件内容（用 Read）| 单次简单修改（直接 Edit）</p>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3>🔗 相关 Skills</h3>
+        <ul class="styled-list">
+          <li><strong>Ultrawork</strong>：并行加速执行</li>
+          <li><strong>Team</strong>：多 agent 协同执行</li>
+          <li><strong>Verify</strong>：完成度验证</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="ralph.html">Ralph</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="plan.html">Plan</a></li>
+        <li><a href="autopilot.html">Autopilot</a></li>
+      </ul>
+      <p>© 2026 Skills 学堂</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
