@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>张三 - 个人网站</title>
+  <meta name="description" content="张三的个人网站 - 全栈开发者">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">Zhang San</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">首页</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="projects.html">项目</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-avatar">ZS</div>
+      <h1>你好，我是张三</h1>
+      <p class="hero-subtitle">全栈开发者 | 技术爱好者 | 创作者</p>
+      <p class="hero-description">
+        热爱技术，专注于构建优雅、高效的应用程序。
+        擅长 Web 开发、云原生和自动化工具。
+      </p>
+      <div class="hero-buttons">
+        <a href="projects.html" class="btn btn-primary">查看项目</a>
+        <a href="about.html" class="btn btn-secondary">了解更多</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <h2>技能专长</h2>
+        <p>我熟悉的技术栈和工具</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <h3>前端开发</h3>
+          <p>React, Vue, TypeScript, 现代 CSS，专注用户体验和性能优化。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>后端开发</h3>
+          <p>Node.js, Python, Go，构建可扩展的 API 和微服务架构。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">☁️</div>
+          <h3>云原生</h3>
+          <p>Docker, Kubernetes, CI/CD 流水线自动化部署。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>数据库</h3>
+          <p>PostgreSQL, MongoDB, Redis，数据建模和性能调优。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📱</div>
+          <h3>移动开发</h3>
+          <p>React Native, Flutter，跨平台移动应用开发与发布。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤖</div>
+          <h3>AI / ML</h3>
+          <p>PyTorch, TensorFlow，机器学习模型训练与部署。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Projects -->
+  <section class="section" style="background: var(--card-bg);">
+    <div class="container">
+      <div class="section-header">
+        <h2>近期项目</h2>
+        <p>一些我参与或独立完成的项目</p>
+      </div>
+      <div class="card-grid">
+        <div class="card project-card">
+          <div class="project-image">📱</div>
+          <h3>任务管理应用</h3>
+          <p>基于 React + Node.js 的实时协作任务管理工具，支持看板和团队功能。</p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Socket.io</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+        <div class="card project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">📊</div>
+          <h3>数据分析平台</h3>
+          <p>可视化数据仪表板，支持多数据源接入和自定义报表生成。</p>
+          <div class="project-tags">
+            <span class="tag">Vue</span>
+            <span class="tag">D3.js</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="card project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);">🔧</div>
+          <h3>DevOps 工具箱</h3>
+          <p>自动化部署脚本集合，支持 Docker、K8s 一键部署。</p>
+          <div class="project-tags">
+            <span class="tag">Shell</span>
+            <span class="tag">Docker</span>
+            <span class="tag">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="projects.html" class="btn btn-secondary">查看所有项目 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>联系我</h2>
+        <p>有项目合作或其他想法？随时联系</p>
+      </div>
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>邮箱</h3>
+          <p>zhangsan@example.com</p>
+        </div>
+        <div class="card contact-card">
+          <div class="contact-icon">💻</div>
+          <h3>GitHub</h3>
+          <p>github.com/zhangsan</p>
+        </div>
+        <div class="card contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>位置</h3>
+          <p>北京，中国</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 张三. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="projects.html">项目</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="src/js/main.js"></script>
+</body>
+</html>
